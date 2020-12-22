@@ -45,5 +45,7 @@ public class Calculator {
       System.out.print("Year " + i + " | ");
       nodeList.get(i).printNode();
     }
+
+    s.close();
   }
 }
