@@ -1,10 +1,8 @@
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.LinkedList;
-import java.util.Scanner;
 
 public class Calculator {
-  public static Node calculate(Node previousNode, double yearlyInterestRate, int years, double monthlyDeposits) {
+  public Node calculate(Node previousNode, double yearlyInterestRate, double monthlyDeposits) {
     double initialBalance = previousNode.getBalance();
 
     BigDecimal bd;
@@ -27,25 +25,25 @@ public class Calculator {
     return newNode;
   }
 
-  public static void main(String[] args) {
-    Node initialNode = new Node(15000.0, 0.0, 15000.0, 0.0, 15000.0);
-    LinkedList<Node> nodeList = new LinkedList<Node>();
-    nodeList.add(initialNode);
+  // public static void main(String[] args) {
+  //   Node initialNode = new Node(15000.0, 0.0, 15000.0, 0.0, 15000.0);
+  //   LinkedList<Node> nodeList = new LinkedList<Node>();
+  //   nodeList.add(initialNode);
 
-    Scanner s = new Scanner(System.in);
-    System.out.print("Years?\n> ");
-    int years = s.nextInt();
+  //   Scanner s = new Scanner(System.in);
+  //   System.out.print("Years?\n> ");
+  //   int years = s.nextInt();
 
-    for (int i = 0; i < years; i++) {
-      Node newNode = calculate(nodeList.get(i), 0.08, years, 100);
-      nodeList.add(newNode);
-    }
+  //   for (int i = 0; i < years; i++) {
+  //     Node newNode = calculate(nodeList.get(i), 0.08, 100);
+  //     nodeList.add(newNode);
+  //   }
 
-    for (int i = 1; i < nodeList.size(); i++) {
-      System.out.print("Year " + i + " | ");
-      nodeList.get(i).printNode();
-    }
+  //   for (int i = 1; i < nodeList.size(); i++) {
+  //     System.out.print("Year " + i + " | ");
+  //     nodeList.get(i).printNode();
+  //   }
 
-    s.close();
-  }
+  //   s.close();
+  // }
 }

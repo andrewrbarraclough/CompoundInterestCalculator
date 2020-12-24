@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch CalculatorDriver",
+      "request": "launch",
+      "mainClass": "CalculatorDriver",
+      "projectName": "CompoundInterestCalculator_29339015"
+    },
+    {
+      "type": "java",
       "name": "Launch Current File",
       "request": "launch",
       "mainClass": "${file}"
@@ -21,7 +28,7 @@
       "type": "java",
       "name": "Launch Test",
       "request": "launch",
-      "vmArgs": "--module-path C:/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml", 
+      "vmArgs": "--module-path C:/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml",
       "mainClass": "Test",
       "projectName": "CompoundInterestCalculator_29339015"
     }
