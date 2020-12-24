@@ -1,14 +1,18 @@
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.chart.StackedBarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.LinkedList;
@@ -35,9 +39,17 @@ public class CalculatorView extends Application {
   @FXML
   private Button calculateButton;
   @FXML
+  private Button clearButton;
+  @FXML
   private TextField futureValueField;
   @FXML
   private Label futureValueLabel;
+  @FXML
+  private StackedBarChart<String, Double> stackedBarChart;
+
+  XYChart.Series<String, Double> initialBalance;
+  XYChart.Series<String, Double> totalDeposits;
+  XYChart.Series<String, Double> totalInterest;
 
   private volatile static CalculatorView instance = null;
 
@@ -65,21 +77,59 @@ public class CalculatorView extends Application {
     primaryStage.show();
   }
 
+  public void addCalcObserver(Observer f) {
+    calculateButton.setOnAction(event -> f.notifyObservers());
+  }
+
+  public void addClearObserver(Observer f) {
+    clearButton.setOnAction(event -> f.notifyObservers());
+  }
+
   public double getInitialBalance() {
-    return 0;
+    return Double.parseDouble(balanceField.getText());
   }
 
   public double getInterestRate() {
-    return 0;
+    return (Double.parseDouble(interestField.getText()) / 100);
   }
 
   public int getCalculationPeriod() {
-    return 0;
+    return Integer.parseInt(calcPeriodField.getText());
   }
 
   public double getMonthlyDeposits() {
-    return 0;
+    return Double.parseDouble(monthlyDepositField.getText());
   }
 
-  public void drawGraph(LinkedList<Node> list) {}
+  public void drawGraph(LinkedList<Node> list) {
+    while (!stackedBarChart.getData().isEmpty()) {
+      stackedBarChart.getData().remove(stackedBarChart.getData().size() - 1);
+    }
+
+    initialBalance = new XYChart.Series<>();
+    totalDeposits = new XYChart.Series<>();
+    totalInterest = new XYChart.Series<>();
+
+    initialBalance.setName("Initial Balance");
+    totalDeposits.setName("Total Deposits");
+    totalInterest.setName("Total Interest");
+
+    for (int i = 1; i < list.size(); i++) {
+      initialBalance.getData().add(new XYChart.Data<>(Integer.toString(i), list.get(0).getBalance()));
+      totalDeposits.getData().add(new XYChart.Data<>(Integer.toString(i), list.get(i).getTotalDeposits()));
+      totalInterest.getData().add(new XYChart.Data<>(Integer.toString(i), list.get(i).getTotalInterest()));
+    }
+
+    stackedBarChart.getData().addAll(initialBalance, totalDeposits, totalInterest);
+  }
+
+  public void clear() {
+    initialBalance.getData().clear();
+    totalDeposits.getData().clear();
+    totalInterest.getData().clear();
+
+    while (!stackedBarChart.getData().isEmpty()) {
+      stackedBarChart.getData().remove(stackedBarChart.getData().size() - 1);
+    }
+  }
 }

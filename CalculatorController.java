@@ -11,8 +11,14 @@ public class CalculatorController {
     view.drawGraph(model.calculate(initialBalance, yearlyInterestRate, calculationPeriod, monthlyDeposits));
   }
 
+  public void clear() {
+    view.clear();
+  }
+
   public CalculatorController(CalculatorModel model, CalculatorView view) {
     this.model = model;
     this.view = view;
+    view.addCalcObserver(this::calculate);
+    view.addClearObserver(this::clear);
   }
 }
