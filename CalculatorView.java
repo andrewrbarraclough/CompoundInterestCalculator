@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -58,8 +59,8 @@ public class CalculatorView extends Application {
   public void start(Stage primaryStage) throws IOException {
     FXMLLoader loader = new FXMLLoader();
     loader.setLocation(new URL("file:///C:/Users/Andrew Barraclough/Documents/Programming/CompoundInterestCalculator/resources/calculatorView.fxml"));
-    GridPane root = (GridPane) loader.load();
-    Scene scene = new Scene(root, 600, 310);
+    AnchorPane root = (AnchorPane) loader.load();
+    Scene scene = new Scene(root, 1280, 720);
     primaryStage.setScene(scene);
     primaryStage.show();
   }
