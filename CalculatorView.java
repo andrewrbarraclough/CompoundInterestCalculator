@@ -70,7 +70,7 @@ public class CalculatorView extends Application {
   @Override
   public void start(Stage primaryStage) throws IOException {
     FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(new URL("file:///C:/Users/Andrew Barraclough/Documents/Programming/CompoundInterestCalculator/resources/calculatorView.fxml"));
+    loader.setLocation(new URL("file:resources/calculatorView.fxml"));
     AnchorPane root = (AnchorPane) loader.load();
     Scene scene = new Scene(root, 1280, 720);
     primaryStage.setScene(scene);
