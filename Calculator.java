@@ -24,26 +24,4 @@ public class Calculator {
     Node newNode = new Node(yearDeposits, yearInterest, totalDeposits, totalInterest, balance);
     return newNode;
   }
-
-  // public static void main(String[] args) {
-  //   Node initialNode = new Node(15000.0, 0.0, 15000.0, 0.0, 15000.0);
-  //   LinkedList<Node> nodeList = new LinkedList<Node>();
-  //   nodeList.add(initialNode);
-
-  //   Scanner s = new Scanner(System.in);
-  //   System.out.print("Years?\n> ");
-  //   int years = s.nextInt();
-
-  //   for (int i = 0; i < years; i++) {
-  //     Node newNode = calculate(nodeList.get(i), 0.08, 100);
-  //     nodeList.add(newNode);
-  //   }
-
-  //   for (int i = 1; i < nodeList.size(); i++) {
-  //     System.out.print("Year " + i + " | ");
-  //     nodeList.get(i).printNode();
-  //   }
-
-  //   s.close();
-  // }
 }
