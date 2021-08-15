@@ -21,7 +21,7 @@ public class Calculator {
     bd = new BigDecimal(totalInterest - previousNode.getTotalInterest()).setScale(2, RoundingMode.HALF_DOWN);
     double yearInterest = bd.doubleValue();
 
-    Node newNode = new Node(yearDeposits, yearInterest, totalDeposits, totalInterest, balance);
+    Node newNode = new Node(yearDeposits, yearInterest, totalDeposits, totalInterest);
     return newNode;
   }
 }
