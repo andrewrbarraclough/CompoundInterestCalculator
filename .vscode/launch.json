@@ -9,6 +9,13 @@
       "name": "Launch CalculatorDriver",
       "request": "launch",
       "mainClass": "CalculatorDriver",
+      "projectName": "CompoundInterestCalculator_6c067d9e"
+    },
+    {
+      "type": "java",
+      "name": "Launch CalculatorDriver",
+      "request": "launch",
+      "mainClass": "CalculatorDriver",
       "projectName": "CompoundInterestCalculator_29339015"
     },
     {

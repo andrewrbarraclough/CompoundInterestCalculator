@@ -2,6 +2,7 @@ import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
@@ -10,6 +11,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.event.EventHandler;
+
+// import java.beans.EventHandler;
 import java.io.IOException;
 import java.net.URL;
 import java.util.LinkedList;
@@ -118,6 +122,31 @@ public class CalculatorView extends Application {
     }
 
     stackedBarChart.getData().addAll(initialBalance, totalDeposits, totalInterest);
+
+    /*
+    for (XYChart.Series<String, Double> series : stackedBarChart.getData()) {
+      for (XYChart.Data<String, Double> item : series.getData()) {
+        item.getNode().setOnMouseClicked(new EventHandler<MouseEvent>() {
+          @Override
+          public void handle(MouseEvent e) {
+            System.out.println("Series: " + series.toString());
+            System.out.println("Item: " + item.toString());
+          }
+        });
+      }
+    }
+    */
+
+    /*
+    for (int i = 0; i < stackedBarChart.getData().size(); i++) {
+      XYChart.Series<String, Double> series = stackedBarChart.getData().get(i);
+      System.out.println(series);
+      for (int j = 0; j < series.getData().size(); j++) {
+        System.out.println("j: " + j);
+        System.out.println(series.getData().get(j));
+      }
+    }
+    */
   }
 
   public void clear() {
