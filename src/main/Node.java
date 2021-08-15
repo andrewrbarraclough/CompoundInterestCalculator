@@ -1,7 +1,7 @@
 /**
  * Represents a particular year.
  * @author Andrew Barraclough
- * @version 1.1
+ * @version 1.2
  * @since 1.0
  */
 public class Node {
@@ -19,12 +19,12 @@ public class Node {
    * @param totalInterest the amount of interest earned to date.
    * @param balance the total amount of money contributed and interest earned to date.
    */
-  public Node(double yearDeposits, double yearInterest, double totalDeposits, double totalInterest, double balance) {
+  public Node(double yearDeposits, double yearInterest, double totalDeposits, double totalInterest) {
     this.yearDeposits = yearDeposits;
     this.yearInterest = yearInterest;
     this.totalDeposits = totalDeposits;
     this.totalInterest = totalInterest;
-    this.balance = balance;
+    this.balance = this.totalDeposits + this.totalInterest;
   }
 
   /**
@@ -64,20 +64,25 @@ public class Node {
    */
   public void setYearInterest(double yearInterest) { this.yearInterest = yearInterest; }
   /**
-   * Sets the amount of money contributed to date.
+   * Sets the amount of money contributed to date, then updates the balance.
    * @param totalDeposits a double representing the money contributed to date.
    */
-  public void setTotalDeposits(double totalDeposits) { this.totalDeposits = totalDeposits; }
+  public void setTotalDeposits(double totalDeposits) {
+    this.totalDeposits = totalDeposits;
+    this.updateBalance();
+  }
   /**
-   * Sets the amount of interest earned to date.
+   * Sets the amount of interest earned to date, then updates the balance.
    * @param totalInterest a double representing the interest earned to date.
    */
-  public void setTotalInterest(double totalInterest) { this.totalInterest = totalInterest; }
+  public void setTotalInterest(double totalInterest) { 
+    this.totalInterest = totalInterest;
+    this.updateBalance();
+  }
   /**
-   * Sets the total amount of money contributed and interest earned to date.
-   * @param balance a double representing the money contributed and interest earned to date.
+   * Updates the balance according to the total amount of money contributed and interest earned to date.
    */
-  public void setBalance(double balance) { this.balance = balance; }
+  public void updateBalance() { this.balance = this.totalDeposits + this.totalInterest; }
 
   /**
    * Converts the Node's data to a helpful string.
